@@ -1,17 +1,17 @@
 import * as React from 'react';
-import { Text, View } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import Ionicons from '@expo/vector-icons/Ionicons';
-import Read from './screen/Read';
-import Create from './screen/Create';
+import Read from './src/screens/Read';
+import Create from './src/screens/Create';
 
 
 const Tab = createBottomTabNavigator();
 
 export default function App() {
   return (
-    <NavigationContainer>
+    <Provider>
+      <NavigationContainer>
       <Tab.Navigator
         screenOptions={({ route }) => ({
           tabBarIcon: ({ focused, color, size }) => {
@@ -36,5 +36,7 @@ export default function App() {
         <Tab.Screen name="Read" component={Read} />
       </Tab.Navigator>
     </NavigationContainer>
+  </Provider>
+    
   );
 }

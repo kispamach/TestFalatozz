@@ -22,6 +22,28 @@ const CreateScreen = ({navigation}) => {
     addItem(name, description, quantity, () => navigation.navigate('Read'))
     
   };
+
+  const checkTextInput = () => {
+    //Check for the name TextInput
+    if (!name.trim()) {
+      alert('Adjon meg egy nevet');
+      return;
+    }
+    //Check for the descreption TextInput
+    if (!description.trim()) {
+      alert('Adjon meg egy leírást');
+      return;
+    }
+    //Check for the quantity TextInput
+    if (!quantity) {
+      alert('Írjon be mennyiséget');
+      return;
+    }
+    //Checked Successfully
+    //Do whatever you want
+    handleSubmit()
+  };
+
   React.useEffect(() => {
     const unsubscribe = navigation.addListener('focus', () => {
       onChangeName('')
@@ -39,39 +61,38 @@ const CreateScreen = ({navigation}) => {
     <View style={styles.main}>
       <View style={styles.container}>
         <View style={styles.inputBox}>
-          <Text>Name:</Text>
+          <Text>Név:</Text>
           <TextInput
             style={styles.input}
             onChangeText={onChangeName}
             value={name}
-            placeholder='Name'
+            placeholder='Név'
           />
         </View>
         <View style={styles.inputBox}>
-          <Text>Description:</Text>
+          <Text>Leírás:</Text>
           <TextInput
             style={styles.input}
             onChangeText={onChangeDescription}
             value={description}
-            placeholder='Description'
+            placeholder='Leírás'
           />
         </View>
         <View style={styles.inputBox}>
-          <Text>Quantity:</Text>
+          <Text>Mennyiség:</Text>
           <TextInput
             style={styles.input}
             onChangeText={onChangeQuantity}
             value={quantity}
-            placeholder='Quantity'
+            placeholder='Mennyiség'
             keyboardType='numeric'
           />
         </View>
         <View style={styles.buttonBox}>
           <Button
-            onPress={handleSubmit}
-            title='Submit'
-            color='#841584'
-            accessibilityLabel='Learn more about this purple button'
+            onPress={checkTextInput}
+            title='Küldés'
+            color='#f56642'          
           />
         </View>
       </View>
@@ -96,10 +117,12 @@ const styles = StyleSheet.create({
     height: 40,
     marginVertical: '2%',
     borderWidth: 1,
+    borderRadius: 4,
     padding: 10,
   },
   buttonBox: {
     marginTop: '4%',
     paddingHorizontal: '5%',
+    borderRadius: 4,
   },
 });

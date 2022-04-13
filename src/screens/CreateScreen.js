@@ -19,7 +19,7 @@ const CreateScreen = ({navigation}) => {
   const [quantity, onChangeQuantity] = React.useState();
 
   const handleSubmit = () => {
-    addItem(name, description, quantity, () => navigation.navigate('Read'))
+    addItem(name, description, quantity, () => navigation.navigate('Lista'))
     
   };
 

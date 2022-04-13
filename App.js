@@ -18,16 +18,16 @@ export default function App() {
     <Provider>
       <NavigationContainer>
         <Tab.Navigator
-          initialRouteName='Read'
+          initialRouteName='Lista'
           screenOptions={({ route }) => ({
             tabBarIcon: ({ focused, color, size }) => {
               let iconName;
 
-              if (route.name === 'Create') {
+              if (route.name === 'Új') {
                 iconName = focused
                   ? 'md-add-circle'
                   : 'md-add-circle-outline';
-              } else if (route.name === 'Read') {
+              } else if (route.name === 'Lista') {
                 iconName = focused ? 'md-list-circle' : 'md-list-circle-outline';
               }
 
@@ -38,8 +38,8 @@ export default function App() {
             tabBarInactiveTintColor: 'gray',
           })}
         >
-          <Tab.Screen name="Create" component={CreateScreen} />
-          <Tab.Screen name="Read" component={ReadScreen} />
+          <Tab.Screen name="Új" component={CreateScreen} />
+          <Tab.Screen name="Lista" component={ReadScreen} />
         </Tab.Navigator>
       </NavigationContainer>
     </Provider>

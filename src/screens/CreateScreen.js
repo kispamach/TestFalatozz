@@ -39,8 +39,7 @@ const CreateScreen = ({navigation}) => {
       alert('Írjon be mennyiséget');
       return;
     }
-    //Checked Successfully
-    //Do whatever you want
+    //Checked Successfully    
     handleSubmit()
   };
 

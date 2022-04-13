@@ -1,27 +1,43 @@
-import { SafeAreaView, StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, ScrollView, Text, View } from 'react-native';
 import React, { useContext } from 'react';
 import { Context } from '../context/ShopContext';
+import Ionicons from '@expo/vector-icons/Ionicons';
 
 import { Card } from 'react-native-elements';
-
-// const { width, height } = Dimensions.get('screen');
 
 const ReadScreen = () => {
   const { state, addItem } = useContext(Context);
 
   return (
-    <SafeAreaView style={styles.container}>
-      <View style={styles.container}>
+    <ScrollView>
         {state.map((item, index) => {
           return (
-            <Card key={index.toString()} title={item.name}>
-              <Text style={styles.paragraph}>{item.description}</Text>              
-              <Text>Quantity: {item.quantity}</Text>
-            </Card>
+            <View style={styles.container}>
+              <Card key={index.toString()} title={item.name}>
+                <Text style={styles.paragraph}>{item.description}</Text>
+                <View style={{ flex: 1, flexDirection: 'row', alignItems: 'center', alignSelf: 'center' }}>
+                  <Ionicons
+                      style={{
+                        alignItems: 'center',
+                        justifyContent: 'center',
+                      }}
+                      name='md-pencil'
+                    />
+                  <Text style={styles.quantity}>{item.quantity} db</Text>
+                  <Ionicons
+                    style={{
+                      alignItems: 'center',
+                      justifyContent: 'center',
+                    }}
+                    name='md-trash'
+                  />
+                </View>              
+              </Card>
+            </View>
           );
         })}
-      </View>
-    </SafeAreaView>
+    </ScrollView>
+      
     
   );
 };
@@ -29,25 +45,23 @@ const ReadScreen = () => {
 export default ReadScreen;
 
 const styles = StyleSheet.create({
-    // itemBox: {
-    //     width: width * 0.9,
-    //     margin: '5%',
-    //     borderRadius: 6,
-    //     backgroundColor: 'white',
-    //     padding: '2%'
-    // },
+    
     container: {
       flex: 1,
       alignItems: 'center',
       justifyContent: 'center',
-      paddingTop: 40,
+      padding: '2%',
       backgroundColor: '#ecf0f1',
+      fontWeight: 'bold',
     },
     paragraph: {
-      margin: 24,
+      margin: 16,
       fontSize: 18,
-      fontWeight: 'bold',
       textAlign: 'center',
-      color: '#34495e',
+      color: '#7a6323',
     },
+    quantity: {
+      paddingRight: 20,
+      paddingLeft: 20,
+    }
 });
